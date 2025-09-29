@@ -19,7 +19,7 @@ body {
   background: #ffffff26;
   box-shadow: 0 4px 30px #0000001a;
   backdrop-filter: blur(10px);
-  border: 1px solid #ffffff33;
+  border: 1px solid #fff3;
 }
 
 .search-container {
@@ -32,7 +32,6 @@ body {
   flex: 1;
   padding: 12px;
   border-radius: 15px;
-  border: none;
   background: #ffffff1a;
   color: #fff;
   font-size: 16px;
