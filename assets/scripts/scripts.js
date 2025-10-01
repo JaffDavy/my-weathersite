@@ -48,9 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('city-name').textContent = 'Location Not Found'
       document.getElementById('temperature').textContent = '--°C'
       document.getElementById('weather-description').textContent = errorMessage
-      document.getElementById('weather-icon').src = ""
-      document.getElementById('forecast-list').innerHTML = ""
-      document.body.className = ""
+      document.getElementById('weather-icon').src = ''
+      document.getElementById('forecast-list').innerHTML = ''
+      document.body.className = ''
       return
     }
 
@@ -60,39 +60,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const isDay = current.is_day
     const conditionCode = current.condition.code
 
-    document.body.className = ""
+    document.body.className = ''
 
-    let weatherClass = ""
+    let weatherClass = ''
     switch (conditionCode) {
       case 1000: // Clear/Sunny
-        weatherClass = isDay ? 'clear' : 'night';
+        weatherClass = isDay ? 'clear' : 'night'
         break
       case 1003: // Partly cloudy
       case 1006: // Cloudy
       case 1009: // Overcast
-        weatherClass = "cloudy"
+        weatherClass = 'cloudy'
         break
       case 1063: // Patchy rain possible
       case 1183: // Light rain
       case 1189: // Moderate rain
       case 1195: // Heavy rain
       case 1150: // Light drizzle
-        weatherClass = "rainy"
+        weatherClass = 'rainy'
         break
       case 1213: // Light snow
       case 1219: // Moderate snow
       case 1225: // Heavy snow
       case 1066: // Patchy snow possible
-        weatherClass = "snowy"
+        weatherClass = 'snowy'
         break
       case 1279: // Patchy light rain with thunder
       case 1282: // Moderate or heavy rain with thunder
       case 1087: // Thundery outbreaks possible
-        weatherClass = "thunderstorm"
+        weatherClass = 'thunderstorm'
         break
       default:
         // Fallback to cloudy for unhandled conditions
-        weatherClass = "cloudy"
+        weatherClass = 'cloudy'
         break
     }
 
@@ -110,9 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update the current weather section
     const forecastList = document.getElementById('forecast-list')
-    forecastList.innerHTML = "" // Clear previous forecast
+    forecastList.innerHTML = ''
 
-    //Loop from index 1 to get the next 5 days of forecast (index 0 is today)
+    // Loop from index 1 to get the next 5 days of forecast (index 0 is today)
     for (let i = 1; i < forecastDays.length; i++) {
       const day = forecastDays[i]
       const date = new Date(day.date)
@@ -121,14 +121,14 @@ document.addEventListener('DOMContentLoaded', () => {
       forecastItem.classList.add('forecast-item')
       forecastItem.innerHTML = `
             <p class='day-info'>${date.toLocaleDateString('en-US', {
-              weekday: 'long',
+              weekday: 'long'
             })}</p>
             <img src='${day.day.condition.icon}' alt='Forecast Icon'>
             <p class='temp-info'>${Math.round(
               day.day.maxtemp_c
             )}° / ${Math.round(day.day.mintemp_c)}°</p>
-        `;
-      forecastList.appendChild(forecastItem);
+        `
+      forecastList.appendChild(forecastItem)
     }
   }
-});
+})
